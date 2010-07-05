@@ -1,0 +1,1 @@
+/home/sebastian/.bash_aliases
