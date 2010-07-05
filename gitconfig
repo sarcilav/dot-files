@@ -5,3 +5,4 @@
 [color]
         branch = auto
         status = auto
+        log = auto

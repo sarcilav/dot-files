@@ -51,10 +51,9 @@ fi
 
 #Truncation code of $PWD
 function truncate_pwd {
-    local maxlen=45
+    local maxlen=30
     local trunc_sym='...'
-    local now_pwd=$PWD
-    now_pwd=${PWD/$HOME/~} # Some sed power
+    local now_pwd=${PWD/$HOME/\~} # Some pattern replace
     if [ ${#now_pwd} -gt $maxlen ]; then
 	local offset=$(( ${#now_pwd} - $maxlen ))
 	echo "${trunc_sym}${now_pwd:$offset:$maxlen}"
@@ -62,11 +61,16 @@ function truncate_pwd {
 	echo "$now_pwd"
     fi
 }
-
+# Is a root git repo???
+function is_git {
+    if [ -d "$PWD/.git/" ]; then
+	echo "root git repo"
+    fi
+}
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[02;32m\]\u@\h\[\033[00m\] \[\033[05;36m\]Jobs:\[\033[00m\]\[\033[01;36m\]\j\[\033[00m\] [\[\033[01;34m\]$(truncate_pwd)\[\033[00m\]]\n(\[\033[01;36m\]\#\[\033[00m\])\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[02;32m\]\u@\h\[\033[00m\] \[\033[05;36m\]Jobs:\[\033[00m\]\[\033[01;36m\]\j\[\033[00m\] [\[\033[01;34m\]$(truncate_pwd)\[\033[00m\]] \[\033[01;31m\]$(is_git)\[\033[00m\]\n(\[\033[01;36m\]\#\[\033[00m\])\$ '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h Jobs:\j [$(truncate_pwd)]\n(\#)\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h Jobs:\j [$(truncate_pwd)] $(is_git)\n(\#)\$ '
 fi
 unset color_prompt force_color_prompt
 
