@@ -8,23 +8,11 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-# if running bash
-if [ -n "$BASH_VERSION" ]; then
-    # include .bashrc if it exists
-    if [ -f "$HOME/.bashrc" ]; then
-	. "$HOME/.bashrc"
-    fi
+#include personal functions
+if [ -f "$HOME/.bash_functions" ]; then
+    . "$HOME/.bash_functions"
 fi
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
-fi
-
-if [ -d "$HOME/.gem/ruby/1.8/bin" ] ; then
-    PATH="$HOME/.gem/ruby/1.8/bin:$PATH"
-fi
-
-if [ -d "$HOME/android-sdk/tools" ] ; then
-    PATH="$HOME/android-sdk/tools:$PATH"
-fi
+add_to_path "$HOME/bin" 
+add_to_path "$HOME/.gem/ruby/1.8/bin"
+add_to_path "$HOME/android-sdk/tools"

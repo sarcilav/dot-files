@@ -2,6 +2,11 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+# include profile if it exists
+if [ -f "$HOME/.profile" ]; then
+    . "$HOME/.profile"
+fi
+
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
@@ -33,26 +38,6 @@ case "$TERM" in
     xterm-color) color_prompt=yes;;
 esac
 
-#Truncation code of $PWD
-function truncate_pwd {
-    local maxlen=30
-    local trunc_sym='...'
-    local now_pwd=${PWD/$HOME/\~} # Some pattern replace
-    if [ ${#now_pwd} -gt $maxlen ]; then
-	local offset=$(( ${#now_pwd} - $maxlen ))
-	echo "${trunc_sym}${now_pwd:$offset:$maxlen}"
-    else
-	echo "$now_pwd"
-    fi
-}
-# Is a root git repo???
-function is_git {
-    local gitrepo=`git status 2>/dev/null`
-    if [ ${#gitrepo} -ne 0 ]; then
-	echo "git repo"
-    fi
-}
-
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
@@ -60,12 +45,12 @@ force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
+        # We have color support; assume it's compliant with Ecma-48
+        # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+        # a case would tend to support setf rather than setaf.)
+        color_prompt=yes
     else
-	color_prompt=
+        color_prompt=
     fi
 fi
 
@@ -89,10 +74,10 @@ unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
-xterm*|rxvt*)
+    xterm*|rxvt*)
     PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
     ;;
-*)
+    *)
     ;;
 esac
 
