@@ -116,3 +116,9 @@ function contains {
         * ) return 0 ;;
     esac
 }
+
+# Plays an entire directory recursive with mplayer
+function play_that {
+    local directory=$1
+    find "$directory" -iname *.[wmo][mpg][a3g] -exec mplayer {} +
+}
