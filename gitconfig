@@ -1,0 +1,26 @@
+[user]
+	email = sebastianarcila@gmail.com
+	name = Sebastian Arcila Valenzuela
+
+[color]
+        diff = auto
+        branch = auto
+        status = auto
+        log = auto
+        
+
+[core]
+	editor = emacsclient
+	excludesfile = /Users/sarcilav/.gitignore
+        
+[apply]
+	whitespace = nowarn
+        
+[alias]
+	st = status -sb
+	ci = commit
+	br = branch
+	co = checkout
+	df = diff
+	lg = log -p
+        featuring = flow feature start

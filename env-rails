@@ -1,0 +1,9 @@
+#!/bin/bash
+#Simple gnome shell script that brings the Server, Log and Console rails + bash 
+if [ $# -eq 1 ]; then
+    gnome-terminal --working-directory="`pwd`/$1"  --tab -t Server --command="script/server" --tab -t Log --command="tail -f log/development.log" --tab -t Consola --command="script/console"  --tab --command=bash
+else
+    echo Bad command
+    echo Usage:
+    echo "      $0 <rails directory>"
+fi

@@ -1,0 +1,25 @@
+# Configs
+config defaultToCurrentScreen true
+config checkDefaultsOnLoad true
+config windowHintsShowIcons true
+config windowHintsIgnoreHiddenWindows false
+config windowHintsSpread true
+config windowHintsFontColor 0;0;0;1.0
+config windowHintsFontName Futura
+config windowHintsFontSize 70
+
+bind e:cmd,shift hint 1234567890 # use whatever keys you want
+
+# Abstract positions
+alias full move screenOriginX;screenOriginY screenSizeX;screenSizeY
+alias lefthalf move screenOriginX;screenOriginY screenSizeX/2;screenSizeY
+alias righthalf move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY
+alias topright corner top-right resize:screenSizeX/2;screenSizeY/4
+alias bottomright corner bottom-right resize:screenSizeX/2;screenSizeY/4*3
+
+bind down:alt ${bottomright}
+bind left:alt ${lefthalf}
+bind up:alt ${full}
+bind right:alt ${righthalf}
+
+
