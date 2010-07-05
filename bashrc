@@ -33,6 +33,26 @@ case "$TERM" in
     xterm-color) color_prompt=yes;;
 esac
 
+#Truncation code of $PWD
+function truncate_pwd {
+    local maxlen=30
+    local trunc_sym='...'
+    local now_pwd=${PWD/$HOME/\~} # Some pattern replace
+    if [ ${#now_pwd} -gt $maxlen ]; then
+	local offset=$(( ${#now_pwd} - $maxlen ))
+	echo "${trunc_sym}${now_pwd:$offset:$maxlen}"
+    else
+	echo "$now_pwd"
+    fi
+}
+# Is a root git repo???
+function is_git {
+    local gitrepo=`git status 2>/dev/null`
+    if [ ${#gitrepo} -ne 0 ]; then
+	echo "git repo"
+    fi
+}
+
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
@@ -49,28 +69,21 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-#Truncation code of $PWD
-function truncate_pwd {
-    local maxlen=30
-    local trunc_sym='...'
-    local now_pwd=${PWD/$HOME/\~} # Some pattern replace
-    if [ ${#now_pwd} -gt $maxlen ]; then
-	local offset=$(( ${#now_pwd} - $maxlen ))
-	echo "${trunc_sym}${now_pwd:$offset:$maxlen}"
-    else
-	echo "$now_pwd"
-    fi
-}
-# Is a root git repo???
-function is_git {
-    if [ -d "$PWD/.git/" ]; then
-	echo "root git repo"
-    fi
-}
+#Color table
+RCC="\[\033[00m\]"
+GREEN="\[\033[01;32m\]"
+CYAN="\[\033[05;36m\]"
+L_CYAN="\[\033[01;36m\]"
+BLUE="\[\033[01;34m\]"
+RED="\[\033[01;31m\]"
+YELLOW="\[\033[01;33m\]"
+#end Color table
+
+unset PS1
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[02;32m\]\u@\h\[\033[00m\] \[\033[05;36m\]Jobs:\[\033[00m\]\[\033[01;36m\]\j\[\033[00m\] [\[\033[01;34m\]$(truncate_pwd)\[\033[00m\]] \[\033[01;31m\]$(is_git)\[\033[00m\]\n(\[\033[01;36m\]\#\[\033[00m\])\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\033[01;33m\]@\[\033[01;32m\]\h\[\033[05;36m\] Jobs:\[\033[01;36m\]\j \[\033[01;33m\][\[\033[01;34m\]$(truncate_pwd)\[\033[01;33m\]] \[\033[01;31m\]$(is_git)\[\033[00m\]\n\[\033[01;33m\][ \[\033[01;36m\]\@ \[\033[01;33m\]](\[\033[01;36m\]\#\[\033[01;33m\])\[\033[01;36m\]\$\[\033[00m\] '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h Jobs:\j [$(truncate_pwd)] $(is_git)\n(\#)\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h Jobs:\j [$(truncate_pwd)] $(is_git)\n[ \@ ](\#)\$ '
 fi
 unset color_prompt force_color_prompt
 
