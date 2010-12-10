@@ -2,7 +2,7 @@
 (show-paren-mode)
 (menu-bar-mode)
 (tool-bar-mode)
-
+(server-mode)
 ;; Load path to emacs.d
 (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
     (let* ((my-lisp-dir "~/.emacs.d/")
@@ -14,8 +14,8 @@
 (color-theme-initialize)
 (color-theme-midnight)
 ;; Template
-(require 'template)
-(template-initialize)
+;; (require 'template)
+;; (template-initialize)			
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.

@@ -13,6 +13,11 @@ if [ -f "$HOME/.bash_functions" ]; then
     . "$HOME/.bash_functions"
 fi
 
-add_to_path "$HOME/bin" 
-add_to_path "$HOME/.gem/ruby/1.8/bin"
-add_to_path "$HOME/android-sdk/tools"
+# include bashrc if it exists
+if [ -f "$HOME/.bashrc" ]; then
+    . "$HOME/.bashrc"
+fi
+
+# add_to_path "$HOME/bin" 
+# add_to_path "$HOME/.gem/ruby/1.8/bin"
+# add_to_path "$HOME/android-sdk/tools"
