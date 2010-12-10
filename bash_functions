@@ -15,7 +15,7 @@ function truncate_pwd {
 function is_git {
     local gitrepo=`git status 2>/dev/null`
     if [ ${#gitrepo} -ne 0 ]; then
-	echo "git repo"
+	echo "git branch `git branch | grep \*`"
     fi
 }
 
