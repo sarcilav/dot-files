@@ -122,3 +122,15 @@ function play_that {
     local directory=$1
     find "$directory" -iname *.[wmo][mpg][a3g] -exec mplayer {} +
 }
+# lets-rails env only on mac osx, using rvm you must past the ruby version
+function lets-rails {
+	osascript -e "
+    tell application \"Terminal\" to do script \"rvm $1\" in selected tab of the front window
+    tell application \"Terminal\" to do script \"script/server\" in selected tab of the front window
+    tell application \"System Events\" to tell process \"Terminal\" to keystroke \"t\" using command down
+    tell application \"Terminal\" to do script \"cd '$PWD' \" in selected tab of the front window 
+    tell application \"Terminal\" to do script \"rvm $1\" in selected tab of the front window
+    tell application \"Terminal\" to do script \"script/console\" in selected tab of the front window
+    tell application \"System Events\" to tell process \"Terminal\" to keystroke \"t\" using command down
+    tell application \"Terminal\" to do script \"cd '$PWD' \" in selected tab of the front window " 
+} 
