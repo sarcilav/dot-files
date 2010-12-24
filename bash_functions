@@ -122,15 +122,31 @@ function play_that {
     local directory=$1
     find "$directory" -iname *.[wmo][mpg][a3g] -exec mplayer {} +
 }
-# lets-rails env only on mac osx, using rvm you must past the ruby version
-function lets-rails {
+function rails_r1.8.7 {
 	osascript -e "
-    tell application \"Terminal\" to do script \"rvm $1\" in selected tab of the front window
+	tell application \"Terminal\" to do script \"rvm 1.8.7\" in selected tab of the front window
     tell application \"Terminal\" to do script \"script/server\" in selected tab of the front window
     tell application \"System Events\" to tell process \"Terminal\" to keystroke \"t\" using command down
     tell application \"Terminal\" to do script \"cd '$PWD' \" in selected tab of the front window 
-    tell application \"Terminal\" to do script \"rvm $1\" in selected tab of the front window
+    tell application \"Terminal\" to do script \"rvm 1.8.7\" in selected tab of the front window
     tell application \"Terminal\" to do script \"script/console\" in selected tab of the front window
     tell application \"System Events\" to tell process \"Terminal\" to keystroke \"t\" using command down
     tell application \"Terminal\" to do script \"cd '$PWD' \" in selected tab of the front window " 
+}
+function rails_r1.9.2 {
+	osascript -e "
+    tell application \"Terminal\" to do script \"rails server\" in selected tab of the front window
+    tell application \"System Events\" to tell process \"Terminal\" to keystroke \"t\" using command down
+    tell application \"Terminal\" to do script \"cd '$PWD' \" in selected tab of the front window 
+    tell application \"Terminal\" to do script \"rails console\" in selected tab of the front window
+    tell application \"System Events\" to tell process \"Terminal\" to keystroke \"t\" using command down
+    tell application \"Terminal\" to do script \"cd '$PWD' \" in selected tab of the front window " 
+}
+# lets-rails env only on mac osx, using rvm you must past the ruby version
+function lets-rails {
+	if [ "$1" = "1.8.7" ]; then
+		rails_r1.8.7
+	else
+		rails_r1.9.2
+	fi
 } 
