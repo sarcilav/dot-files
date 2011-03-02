@@ -6,3 +6,6 @@
         branch = auto
         status = auto
         log = auto
+[github]
+	user = sarcilav
+	token = 7157651ead6615d960b32d611406531d
