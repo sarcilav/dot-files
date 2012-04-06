@@ -18,6 +18,4 @@ if [ -f "$HOME/.bashrc" ]; then
     . "$HOME/.bashrc"
 fi
 
-# add_to_path "$HOME/bin" 
-# add_to_path "$HOME/.gem/ruby/1.8/bin"
-# add_to_path "$HOME/android-sdk/tools"
+export NODE_PATH="/usr/local/lib/node_modules"
