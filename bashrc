@@ -70,10 +70,10 @@ unset color_prompt force_color_prompt
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
     xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
+        PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+        ;;
     *)
-    ;;
+        ;;
 esac
 
 # enable color support of ls and also add handy aliases
@@ -97,6 +97,11 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+#include personal functions
+if [ -f "$HOME/.bash_functions" ]; then
+    . "$HOME/.bash_functions"
+fi
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -109,11 +114,11 @@ export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
       # Add the following to your ~/.bashrc or ~/.zshrc
-      hitch() {
-        command hitch "$@"
-        if [[ -s "$HOME/.hitch_export_authors" ]] ; then source "$HOME/.hitch_export_authors" ; fi
-      }
-      alias unhitch='hitch -u'
+hitch() {
+    command hitch "$@"
+    if [[ -s "$HOME/.hitch_export_authors" ]] ; then source "$HOME/.hitch_export_authors" ; fi
+}
+alias unhitch='hitch -u'
       # Uncomment to persist pair info between terminal instances
       # hitch
 

@@ -8,11 +8,6 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-#include personal functions
-if [ -f "$HOME/.bash_functions" ]; then
-    . "$HOME/.bash_functions"
-fi
-
 # include bashrc if it exists
 if [ -f "$HOME/.bashrc" ]; then
     . "$HOME/.bashrc"
