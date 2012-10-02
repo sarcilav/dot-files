@@ -130,11 +130,4 @@ function nt {
      tell application \"Terminal\" to do script \"cd '$PWD' \" in selected tab of the front window"
  
 }
-function lets-rails {
-    # osascript -e "tell application \"Terminal\" to do script \"autotest\" in selected tab of the front window"
-#     nt
-    osascript -e "tell application \"Terminal\" to do script \"rails server\" in selected tab of the front window"
-    nt
-    osascript -e "tell application \"Terminal\" to do script \"rails console\" in selected tab of the front window"
-    nt
-}
+

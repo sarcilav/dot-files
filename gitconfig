@@ -3,9 +3,21 @@
 	name = Sebastian Arcila Valenzuela
 
 [color]
+        diff = auto
         branch = auto
         status = auto
         log = auto
 [github]
 	user = sarcilav
-	token = 7157651ead6615d960b32d611406531d
+
+[core]
+	editor = emacsclient
+[apply]
+	whitespace = nowarn
+[alias]
+	st = status
+	ci = commit
+	br = branch
+	co = checkout
+	df = diff
+	lg = log -p
