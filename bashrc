@@ -122,3 +122,5 @@ alias unhitch='hitch -u'
       # Uncomment to persist pair info between terminal instances
       # hitch
 
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
