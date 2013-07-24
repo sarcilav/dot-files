@@ -7,17 +7,21 @@
         branch = auto
         status = auto
         log = auto
+        
 [github]
 	user = sarcilav
 
 [core]
 	editor = emacsclient
+        
 [apply]
 	whitespace = nowarn
+        
 [alias]
-	st = status
+	st = status -sb
 	ci = commit
 	br = branch
 	co = checkout
 	df = diff
 	lg = log -p
+        featuring = flow feature start
