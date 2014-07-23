@@ -19,11 +19,11 @@ export EDITOR="emacsclient"
 ### Add by the Heroku Toolbelt
 add_to_path "/usr/local/heroku/bin"
 
-### Add RVM to PATH for scripting
-add_to_path "$HOME/.rvm/bin"
+### Add rubies to PATH for scripting
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 ### Add go env bars
 export GOPATH=$HOME/go
-#export PATH=$PATH:/usr/local/Cellar/go/1.2.1/libexec/bin:$GOPATH/bin
-add_to_path "/usr/local/Cellar/go/1.2.1/libexec/bin"
+#export PATH=$PATH:/usr/local/Cellar/go/1.3/libexec/bin:$GOPATH/bin
+add_to_path "/usr/local/Cellar/go/1.3/libexec/bin"
 add_to_path "$GOPATH/bin"
