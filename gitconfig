@@ -10,7 +10,8 @@
         
 [github]
 	user = sarcilav
-        token = 0786170194ccb1ec679a4d1bb393f12d
+        token = 
+
 [core]
 	editor = emacsclient
 	excludesfile = /Users/sarcilav/.gitignore

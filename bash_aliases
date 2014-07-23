@@ -23,3 +23,4 @@ alias pgstop="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
 alias memcached="/usr/local/opt/memcached/bin/memcached"
 alias lol-locale="echo locale = en_US > /Applications/League\ of\ Legends.app/Contents/LOL/RADS/system/locale.cfg"
 alias elasticsearch="elasticsearch --config=/usr/local/opt/elasticsearch/config/elasticsearch.yml"
+
