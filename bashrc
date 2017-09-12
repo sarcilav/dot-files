@@ -123,3 +123,8 @@ alias unhitch='hitch -u'
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+complete -C aws_completer aws
+
+PERL_MB_OPT="--install_base \"/Users/sarcilav/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/Users/sarcilav/perl5"; export PERL_MM_OPT;

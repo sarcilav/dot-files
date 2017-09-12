@@ -27,3 +27,6 @@
 	df = diff
 	lg = log -p
         featuring = flow feature start
+[push]
+	default = simple
+

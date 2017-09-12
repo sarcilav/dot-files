@@ -17,13 +17,14 @@ export NODE_PATH="/usr/local/lib/node_modules"
 
 export EDITOR="emacsclient"
 ### Add by the Heroku Toolbelt
-add_to_path "/usr/local/heroku/bin"
+export PATH=$PATH:/usr/local/heroku/bin
 
 ### Add rubies to PATH for scripting
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 ### Add go env bars
 export GOPATH=$HOME/go
-#export PATH=$PATH:/usr/local/Cellar/go/1.3/libexec/bin:$GOPATH/bin
-add_to_path "/usr/local/Cellar/go/1.3/libexec/bin"
-add_to_path "$GOPATH/bin"
+export PATH=$PATH:/usr/local/Cellar/go/1.3/libexec/bin:$GOPATH/bin
+
+### Add custom emacs
+export PATH=$PATH:/Applications/Emacs.app/Contents/MacOS/bin
