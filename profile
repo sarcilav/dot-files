@@ -14,7 +14,7 @@ if [ -f "$HOME/.bashrc" ]; then
 fi
 
 export NODE_PATH="/usr/local/lib/node_modules"
-
+export PATH="/usr/local/bin:$PATH"
 export EDITOR="emacsclient"
 ### Add by the Heroku Toolbelt
 export PATH=$PATH:/usr/local/heroku/bin
@@ -24,7 +24,17 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 ### Add go env bars
 export GOPATH=$HOME/go
-export PATH=$PATH:/usr/local/Cellar/go/1.3/libexec/bin:$GOPATH/bin
+export PATH=$PATH:/usr/local/Cellar/go/1.10.3/bin:$GOPATH/bin
 
 ### Add custom emacs
 export PATH=$PATH:/Applications/Emacs.app/Contents/MacOS/bin
+
+# BEGIN ANSIBLE MANAGED BLOCK
+source ~/.cw/env.sh
+# END ANSIBLE MANAGED BLOCK
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/cw1517/google-cloud-sdk/path.bash.inc' ]; then . '/Users/cw1517/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/cw1517/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/cw1517/google-cloud-sdk/completion.bash.inc'; fi
