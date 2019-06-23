@@ -29,10 +29,6 @@ export PATH=$PATH:/usr/local/Cellar/go/1.10.3/bin:$GOPATH/bin
 ### Add custom emacs
 export PATH=$PATH:/Applications/Emacs.app/Contents/MacOS/bin
 
-# BEGIN ANSIBLE MANAGED BLOCK
-source ~/.cw/env.sh
-# END ANSIBLE MANAGED BLOCK
-
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/cw1517/google-cloud-sdk/path.bash.inc' ]; then . '/Users/cw1517/google-cloud-sdk/path.bash.inc'; fi
 
