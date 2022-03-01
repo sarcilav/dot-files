@@ -13,24 +13,25 @@ if [ -f "$HOME/.bashrc" ]; then
     . "$HOME/.bashrc"
 fi
 
-export NODE_PATH="/usr/local/lib/node_modules"
-export PATH="/usr/local/bin:$PATH"
 export EDITOR="emacsclient"
-### Add by the Heroku Toolbelt
-export PATH=$PATH:/usr/local/heroku/bin
 
 ### Add rubies to PATH for scripting
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
-### Add go env bars
-export GOPATH=$HOME/go
-export PATH=$PATH:/usr/local/Cellar/go/1.10.3/bin:$GOPATH/bin
 
-### Add custom emacs
-export PATH=$PATH:/Applications/Emacs.app/Contents/MacOS/bin
+
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+if [ -f /Users/s.arcila.valenzuela/projects/cw-cli/path.bash.inc ] ; then source /Users/s.arcila.valenzuela/projects/cw-cli/path.bash.inc ; fi # cw-cli
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/cw1517/google-cloud-sdk/path.bash.inc' ]; then . '/Users/cw1517/google-cloud-sdk/path.bash.inc'; fi
+if [ -f '/Users/s.arcila.valenzuela/Downloads/google-cloud-sdk/path.bash.inc' ]; then . '/Users/s.arcila.valenzuela/Downloads/google-cloud-sdk/path.bash.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/cw1517/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/cw1517/google-cloud-sdk/completion.bash.inc'; fi
+if [ -f '/Users/s.arcila.valenzuela/Downloads/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/s.arcila.valenzuela/Downloads/google-cloud-sdk/completion.bash.inc'; fi
+
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"

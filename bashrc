@@ -121,10 +121,21 @@ alias unhitch='hitch -u'
       # Uncomment to persist pair info between terminal instances
       # hitch
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
 complete -C aws_completer aws
 
 PERL_MB_OPT="--install_base \"/Users/sarcilav/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/Users/sarcilav/perl5"; export PERL_MM_OPT;
+
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+if [ -f /Users/s.arcila.valenzuela/projects/cw-cli/path.bash.inc ] ; then source /Users/s.arcila.valenzuela/projects/cw-cli/path.bash.inc ; fi # cw-cli
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/s.arcila.valenzuela/google-cloud-sdk/path.bash.inc' ]; then . '/Users/s.arcila.valenzuela/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/s.arcila.valenzuela/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/s.arcila.valenzuela/google-cloud-sdk/completion.bash.inc'; fi
