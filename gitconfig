@@ -1,6 +1,7 @@
 [user]
 	email = sebastianarcila@gmail.com
 	name = Sebastian Arcila Valenzuela
+	signingkey = 
 
 [color]
         diff = auto
@@ -30,3 +31,11 @@
 [push]
 	default = simple
 
+[gpg]
+	format = ssh
+
+[commit]
+        gpgsign = true
+
+[tag]
+        forceSignAnnotated = true
