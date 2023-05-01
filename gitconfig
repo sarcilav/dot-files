@@ -1,7 +1,7 @@
 [user]
 	email = sebastianarcila@gmail.com
 	name = Sebastian Arcila Valenzuela
-	signingkey = 
+	signingkey = ~/.ssh/id_ed25519
 
 [color]
         diff = auto
