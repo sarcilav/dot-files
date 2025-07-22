@@ -128,3 +128,5 @@ export NVM_DIR="$HOME/.nvm"
 ### Add rubies to PATH for scripting
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
+### Add direnv hook
+eval "$(direnv hook bash)"
