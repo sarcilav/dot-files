@@ -11,14 +11,6 @@ function truncate_pwd {
     fi
 }
 
-# Is a root git repo???
-function is_git {
-    local gitrepo=`git status 2>/dev/null`
-    if [ ${#gitrepo} -ne 0 ]; then
-	echo "git branch `git branch | grep \*`"
-    fi
-}
-
 # Add to path add the begin or end of the PATH
 # Returns: 1 or sets the new PATH
 # Called like: add_to_path <directory> (pre|post)
@@ -122,12 +114,28 @@ function play_that {
     local directory=$1
     find "$directory" -iname *.[wmo][mpg][a3g] -exec mplayer {} +
 }
-# new tab in the CWD
-# the following funtinos only work in mac os x
-function nt {
-    osascript -e "
-     tell application \"System Events\" to tell process \"Terminal\" to keystroke \"t\" using command down
-     tell application \"Terminal\" to do script \"cd '$PWD' \" in selected tab of the front window"
- 
+
+# Compression
+compress() { tar -czf "${1%/}.tar.gz" "${1%/}"; }
+alias decompress="tar -xzf"
+
+# SSH Port Forwarding Functions
+fip() {
+  (( $# < 2 )) && echo "Usage: fip <host> <port1> [port2] ..." && return 1
+  local host="$1"
+  shift
+  for port in "$@"; do
+    ssh -f -N -L "$port:localhost:$port" "$host" && echo "Forwarding localhost:$port -> $host:$port"
+  done
 }
 
+dip() {
+  (( $# == 0 )) && echo "Usage: dip <port1> [port2] ..." && return 1
+  for port in "$@"; do
+    pkill -f "ssh.*-L $port:localhost:$port" && echo "Stopped forwarding port $port" || echo "No forwarding on port $port"
+  done
+}
+
+lip() {
+  pgrep -af "ssh.*-L [0-9]+:localhost:[0-9]+" || echo "No active forwards"
+}

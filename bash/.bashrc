@@ -1,9 +1,49 @@
 # If not running interactively, don't do anything (leave this at the top of this file)
 [[ $- != *i* ]] && return
+export SUDO_EDITOR="$EDITOR"
+export BAT_THEME=ansi
+# History control
+shopt -s histappend
+HISTCONTROL=ignoreboth
+HISTSIZE=32768
+HISTFILESIZE="${HISTSIZE}"
 
-# All the default Omarchy aliases and functions
-# (don't mess with these directly, just overwrite them here!)
-source ~/.local/share/omarchy/default/bash/rc
+# Autocompletion
+if [[ ! -v BASH_COMPLETION_VERSINFO && -f /usr/share/bash-completion/bash_completion ]]; then
+  source /usr/share/bash-completion/bash_completion
+fi
+
+# Ensure command hashing is off for mise
+set +h
+
+source ~/dot-files/bash_aliases
+source ~/dot-files/bash_functions
+if command -v mise &> /dev/null; then
+  eval "$(mise activate bash)"
+fi
+
+if command -v starship &> /dev/null; then
+  eval "$(starship init bash)"
+fi
+
+if command -v zoxide &> /dev/null; then
+  eval "$(zoxide init bash)"
+fi
+
+if command -v try &> /dev/null; then
+  eval "$(SHELL=/bin/bash try init ~/Work/tries)"
+fi
+
+if command -v fzf &> /dev/null; then
+  if [[ -f /usr/share/fzf/completion.bash ]]; then
+    source /usr/share/fzf/completion.bash
+  fi
+  if [[ -f /usr/share/fzf/key-bindings.bash ]]; then
+    source /usr/share/fzf/key-bindings.bash
+  fi
+fi
+
+[[ $- == *i* ]] && bind -f ~/dot-files/inputrc
 
 # Add your own exports, aliases, and functions here.
 #
