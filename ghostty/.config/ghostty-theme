@@ -1,0 +1,23 @@
+# Background and foreground colors
+background = #141b1e
+foreground = #dadada
+
+# Standard colors
+palette = 0=#141b1e
+palette = 1=#e57474
+palette = 2=#8ccf7e
+palette = 3=#e5c76b
+palette = 4=#67b0e8
+palette = 5=#c47fd5
+palette = 6=#6cbfbf
+palette = 7=#dadada
+
+# Bright colors
+palette = 8=#232a2d
+palette = 9=#e57474
+palette = 10=#8ccf7e
+palette = 11=#e5c76b
+palette = 12=#67b0e8
+palette = 13=#c47fd5
+palette = 14=#6cbfbf
+palette = 15=#dadada
